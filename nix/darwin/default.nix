@@ -81,6 +81,18 @@
     ];
   };
 
+  # ----------------------------------------
+  # Auto-start applications
+  # ----------------------------------------
+  launchd.user.agents.homerow = {
+    serviceConfig = {
+      Label = "com.dexterleng.homerow.launcher";
+      ProgramArguments = [ "/Applications/Homerow.app/Contents/MacOS/Homerow" ];
+      RunAtLoad = true;
+      KeepAlive = false;
+    };
+  };
+
   # Primary user
   system.primaryUser = username;
 
