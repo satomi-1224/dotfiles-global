@@ -1,0 +1,24 @@
+[[manager.prepend_keymap]]
+on   = [ "l" ]
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+[[manager.prepend_keymap]]
+on   = [ "<Enter>" ]
+run  = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+[[manager.prepend_keymap]]
+on   = [ "C" ]
+run  = "plugin ouch"
+desc = "Compress with ouch"
+
+[[manager.prepend_keymap]]
+on   = [ "<C-e>" ]
+run  = "seek 5"
+desc = "Scroll down in preview"
+
+[[manager.prepend_keymap]]
+on   = [ "<C-y>" ]
+run  = "seek -5"
+desc = "Scroll up in preview"

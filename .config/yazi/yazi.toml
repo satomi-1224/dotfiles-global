@@ -1,0 +1,17 @@
+[opener]
+play = [
+  { run = 'mpv --vo=kitty --really-quiet "$@"', block = true, desc = "Play inline (kitty)" },
+  { run = 'mpv "$@"', orphan = true, desc = "Play with mpv (window)" },
+]
+
+[open]
+prepend_rules = [
+  { mime = "video/*", use = "play" },
+]
+
+[plugin]
+prepend_previewers = [
+  { mime = "video/*", run = "video" },
+  { name = "*.md", run = "glow" },
+  { mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch" },
+]
