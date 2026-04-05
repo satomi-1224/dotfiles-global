@@ -28,12 +28,12 @@
         ];
 
         home.file = {
-          ".config/nvim".source = "${self}/.config/nvim";
-          ".config/yazi".source = "${self}/.config/yazi";
-          ".config/wezterm".source = "${self}/.config/wezterm";
-          ".config/aerospace".source = "${self}/.config/aerospace";
+          ".config/nvim" = { source = "${self}/.config/nvim"; recursive = true; };
+          ".config/yazi" = { source = "${self}/.config/yazi"; recursive = true; };
+          ".config/wezterm" = { source = "${self}/.config/wezterm"; recursive = true; };
+          ".config/aerospace" = { source = "${self}/.config/aerospace"; recursive = true; };
           ".aerospace.toml".source = "${self}/.aerospace.toml";
-          ".hammerspoon".source = "${self}/.hammerspoon";
+          ".hammerspoon" = { source = "${self}/.hammerspoon"; recursive = true; };
         };
 
         home.stateVersion = "24.11";
