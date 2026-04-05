@@ -77,6 +77,7 @@
       "google-japanese-ime"
       "hammerspoon"
       "homerow"
+      "dbeaver-community"
     ];
   };
 
