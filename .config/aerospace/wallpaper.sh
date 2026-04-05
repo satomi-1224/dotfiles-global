@@ -3,7 +3,7 @@
 # on-workspace-changeコールバックから呼ばれる
 # get_wallpaper関数は wallpaper_config.sh で定義
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPT_DIR="$HOME/.config/aerospace"
 
 # マシン固有の壁紙マッピングを読み込み（なければスキップ）
 # wallpaper_config.sh では get_wallpaper() 関数を定義する:
