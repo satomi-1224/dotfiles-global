@@ -33,8 +33,12 @@
   system.defaults.spaces.spans-displays = false;
 
   system.activationScripts.postActivation.text = ''
-    # Disable Spotlight keyboard shortcut keys
-    for key in 32 34 33 35 79 80 81 82 118 119 120 121 122; do
+    # Disable symbolic hotkeys:
+    #   64,65       = Spotlight (Cmd+Space, Cmd+Option+Space)
+    #   32-35       = Mission Control / Application windows
+    #   79-82       = Move between Spaces
+    #   118-122     = Switch to Desktop 1-5
+    for key in 64 65 32 34 33 35 79 80 81 82 118 119 120 121 122; do
       defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$key" \
         "<dict><key>enabled</key><false/><key>type</key><string>standard</string><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>65535</integer><integer>0</integer></array><key>type</key><string>standard</string></dict></dict>"
     done
