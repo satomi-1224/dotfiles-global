@@ -33,11 +33,15 @@
   system.defaults.spaces.spans-displays = false;
 
   system.activationScripts.postActivation.text = ''
+    # Disable Spotlight keyboard shortcut keys
     for key in 32 34 33 35 79 80 81 82 118 119 120 121 122; do
       defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$key" \
         "<dict><key>enabled</key><false/><key>type</key><string>standard</string><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>65535</integer><integer>0</integer></array><key>type</key><string>standard</string></dict></dict>"
     done
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
+    # Disable Spotlight indexing
+    mdutil -a -i off &>/dev/null || true
   '';
 
   # Finder
@@ -84,6 +88,24 @@
   # ----------------------------------------
   # Auto-start applications
   # ----------------------------------------
+  launchd.user.agents.hammerspoon = {
+    serviceConfig = {
+      Label = "org.hammerspoon.Hammerspoon.launcher";
+      ProgramArguments = [ "/Applications/Hammerspoon.app/Contents/MacOS/Hammerspoon" ];
+      RunAtLoad = true;
+      KeepAlive = false;
+    };
+  };
+
+  launchd.user.agents.aerospace = {
+    serviceConfig = {
+      Label = "com.nikitabobko.aerospace.launcher";
+      ProgramArguments = [ "/Applications/AeroSpace.app/Contents/MacOS/AeroSpace" ];
+      RunAtLoad = true;
+      KeepAlive = false;
+    };
+  };
+
   launchd.user.agents.homerow = {
     serviceConfig = {
       Label = "com.dexterleng.homerow.launcher";
