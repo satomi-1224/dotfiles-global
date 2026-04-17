@@ -99,24 +99,8 @@
   # ----------------------------------------
   # Auto-start applications
   # ----------------------------------------
-  launchd.user.agents.hammerspoon = {
-    serviceConfig = {
-      Label = "org.hammerspoon.Hammerspoon.launcher";
-      ProgramArguments = [ "/Applications/Hammerspoon.app/Contents/MacOS/Hammerspoon" ];
-      RunAtLoad = true;
-      KeepAlive = false;
-    };
-  };
-
-  launchd.user.agents.aerospace = {
-    serviceConfig = {
-      Label = "com.nikitabobko.aerospace.launcher";
-      ProgramArguments = [ "/Applications/AeroSpace.app/Contents/MacOS/AeroSpace" ];
-      RunAtLoad = true;
-      KeepAlive = false;
-    };
-  };
-
+  # Hammerspoon / AeroSpace はアプリ側の start-at-login で起動するため launchd agent は登録しない
+  # (両方登録すると macOS ログイン項目と launchd の二重起動になる)
   launchd.user.agents.homerow = {
     serviceConfig = {
       Label = "com.dexterleng.homerow.launcher";
