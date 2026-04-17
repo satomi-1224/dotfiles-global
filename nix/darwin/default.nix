@@ -52,6 +52,12 @@
     FXPreferredViewStyle = "clmv";
   };
 
+  # Keyboard
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToControl = true;
+  };
+
   # Global
   system.defaults.NSGlobalDomain = {
     AppleInterfaceStyle = "Dark";
