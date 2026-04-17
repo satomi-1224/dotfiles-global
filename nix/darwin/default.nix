@@ -92,6 +92,7 @@
       "hammerspoon"
       "homerow"
       "dbeaver-community"
+      "wezterm"
     ];
   };
 
