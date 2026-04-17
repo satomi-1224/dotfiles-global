@@ -32,9 +32,4 @@
     enableZshIntegration = true;
     shellWrapperName = "y";
   };
-
-  # WezTerm (terminal)
-  programs.wezterm = {
-    enable = true;
-  };
 }
