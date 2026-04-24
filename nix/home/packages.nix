@@ -4,6 +4,7 @@
     # CLI tools
     ripgrep
     lazygit
+    gh
     glow
     ouch
     ffmpegthumbnailer
