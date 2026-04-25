@@ -11,9 +11,13 @@
       url = "github:ryoppippi/claude-code-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    apm-overlay = {
+      url = "github:satomi-1224/apm-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, claude-code-overlay, ... }: {
+  outputs = { self, nixpkgs, home-manager, claude-code-overlay, apm-overlay, ... }: {
 
     darwinModules = {
       default = import ./nix/darwin;
@@ -41,5 +45,6 @@
     };
 
     overlays.claude-code = claude-code-overlay.overlays.default;
+    overlays.apm-cli = apm-overlay.overlays.default;
   };
 }
