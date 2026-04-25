@@ -10,6 +10,7 @@
     ffmpegthumbnailer
     mpv
     claude-code
+    apm-cli
     tree-sitter
     # Docker
     docker-client
