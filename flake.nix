@@ -35,7 +35,10 @@
           ".config/nvim" = { source = "${self}/.config/nvim"; recursive = true; };
           ".config/yazi" = { source = "${self}/.config/yazi"; recursive = true; };
           ".config/wezterm" = { source = "${self}/.config/wezterm"; recursive = true; };
-          ".config/aerospace" = { source = "${self}/.config/aerospace"; recursive = true; };
+          ".config/aerospace/wallpaper.sh" = {
+            source = "${self}/.config/aerospace/wallpaper.sh";
+            executable = true;
+          };
           ".aerospace.toml".source = "${self}/.aerospace.toml";
           ".hammerspoon" = { source = "${self}/.hammerspoon"; recursive = true; };
         };
