@@ -1,53 +1,31 @@
+-- lua/config/lazy.lua
+-- lazy.nvimのブートストラップ（自動インストール）と設定
+-- lazy.nvimはNeovimのプラグインマネージャ
+-- プラグインのインストール・更新・遅延読み込みを管理する
+
+-- lazy.nvimがまだインストールされていなければ、GitHubからクローンして自動インストールする
+-- vim.fn.stdpath("data") は ~/.local/share/nvim を指す
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+if not vim.uv.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none", -- blobを除外してクローンを高速化
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",    -- 安定版ブランチを使用
+    lazypath,
+  })
 end
+-- ランタイムパスの先頭にlazy.nvimを追加して、require("lazy")で読み込めるようにする
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-  spec = {
-    -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- import/override with your plugins
-    { import = "plugins" },
-  },
-  defaults = {
-    -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
-    -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
-    lazy = false,
-    -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
-    -- have outdated releases, which may break your Neovim install.
-    version = false, -- always use the latest git commit
-    -- version = "*", -- try installing the latest stable version for plugins that support semver
-  },
-  install = { colorscheme = { "tokyonight", "habamax" } },
-  checker = {
-    enabled = true, -- check for plugin updates periodically
-    notify = false, -- notify on update
-  }, -- automatically check for plugin updates
-  performance = {
-    rtp = {
-      -- disable some rtp plugins
-      disabled_plugins = {
-        "gzip",
-        -- "matchit",
-        -- "matchparen",
-        "netrwPlugin",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      },
-    },
+-- "plugins" を指定すると lua/plugins/ ディレクトリ内の全.luaファイルを
+-- プラグイン定義として自動で読み込む
+-- 新しいプラグインを追加するには lua/plugins/ にファイルを1つ追加するだけでよい
+require("lazy").setup("plugins", {
+  -- プラグインの設定ファイルが変更された時の挙動
+  change_detection = {
+    -- 変更検知の通知を無効化（手動で :Lazy sync を実行して反映する）
+    notify = false,
   },
 })

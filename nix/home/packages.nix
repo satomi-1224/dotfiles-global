@@ -12,6 +12,7 @@
     claude-code
     apm-cli
     tree-sitter
+    nodejs
     # Docker
     docker-client
     docker-compose
