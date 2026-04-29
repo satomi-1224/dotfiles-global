@@ -11,6 +11,7 @@
     mpv
     claude-code
     tree-sitter
+    nodejs
     # Docker
     docker-client
     docker-compose

@@ -1,9 +1,58 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
+-- lua/config/keymaps.lua
+-- プラグインに依存しないキーマップ
+-- プラグイン固有のキーマップは各プラグインファイル内で設定する
+--
+-- 書式: map(モード, キー, 動作, オプション)
+--   モード: "n"=ノーマル, "v"=ビジュアル, "i"=インサート, "x"=ビジュアルブロック
+--   desc: which-key等で表示される説明文
 
--- Leader + 上下左右 でウィンドウサイズを変更
-vim.keymap.set("n", "<Leader><Up>", ":resize -2<CR>")
-vim.keymap.set("n", "<Leader><Down>", ":resize +2<CR>")
-vim.keymap.set("n", "<Leader><Left>", ":vertical resize -2<CR>")
-vim.keymap.set("n", "<Leader><Right>", ":vertical resize +2<CR>")
+local map = vim.keymap.set
+
+-- 検索結果のジャンプ後にカーソル位置を画面中央にする
+-- zz=画面中央にスクロール、zv=折りたたみを開く
+-- これにより検索結果を見失いにくくなる
+map("n", "n", "nzzzv", { desc = "次の検索結果（中央表示）" })
+map("n", "N", "Nzzzv", { desc = "前の検索結果（中央表示）" })
+
+-- ウィンドウ間移動
+-- Ctrl+hjkl で分割ウィンドウ間を移動する（デフォルトの<C-w>hより押しやすい）
+map("n", "<C-h>", "<C-w>h", { desc = "左のウィンドウへ移動" })
+map("n", "<C-j>", "<C-w>j", { desc = "下のウィンドウへ移動" })
+map("n", "<C-k>", "<C-w>k", { desc = "上のウィンドウへ移動" })
+map("n", "<C-l>", "<C-w>l", { desc = "右のウィンドウへ移動" })
+
+-- ウィンドウリサイズ
+-- Ctrl+矢印キーで分割ウィンドウのサイズを調整する
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "ウィンドウ高さを2行増やす" })
+map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "ウィンドウ高さを2行減らす" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "ウィンドウ幅を2列減らす" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "ウィンドウ幅を2列増やす" })
+
+-- バッファ操作
+-- バッファ = Neovimが開いているファイルのこと（タブとは別の概念）
+-- Shift+H/L で前後のバッファに素早く切り替えられる
+map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "現在のバッファを閉じる" })
+map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "前のバッファに切り替え" })
+map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "次のバッファに切り替え" })
+
+-- ビジュアルモードでのインデント操作
+-- デフォルトでは<や>でインデントすると選択が解除されてしまう
+-- gvを追加することで、インデント後も選択状態を維持する
+map("v", "<", "<gv", { desc = "インデントを減らす（選択維持）" })
+map("v", ">", ">gv", { desc = "インデントを増やす（選択維持）" })
+
+-- ビジュアルモードで選択行を上下に移動
+-- 選択した行をまとめて上下に移動できる
+-- =gv でインデントを自動調整しつつ選択を維持する
+map("v", "J", ":m '>+1<cr>gv=gv", { desc = "選択行を1行下に移動" })
+map("v", "K", ":m '<-2<cr>gv=gv", { desc = "選択行を1行上に移動" })
+
+-- Escキーで検索ハイライトをクリア
+-- /で検索した後のハイライトが残り続けるのを、Escを押すだけで消せる
+map("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "検索ハイライトを消す" })
+
+-- レジスタを保持するペースト
+-- ビジュアルモードで選択してペーストすると、通常は上書きされた文字がレジスタに入る
+-- "_dP を使うことで、元のレジスタの内容を保持したまま貼り付けられる
+-- 例: 「hello」をヤンクして「world」を選択してペースト → もう一度「hello」をペーストできる
+map("x", "<leader>p", '"_dP', { desc = "レジスタを保持してペースト" })
