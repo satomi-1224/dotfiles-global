@@ -13,22 +13,18 @@
 
 return {
   "stevearc/oil.nvim",
-  -- nvim-web-devicons: ファイル種別に応じたアイコンを表示する
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  -- keys: 「-」が押された時に初めて読み込む（遅延読み込み）
-  keys = {
-    { "e", "<cmd>Oil<cr>", desc = "ファイラーを開く" },
-  },
-  opts = {
-    -- columns: ファイル一覧に表示する列
-    -- "icon"のみ表示（パーミッションやファイルサイズは非表示にして簡素にする）
-    columns = {
-      "icon",
-    },
-    -- view_options: 表示オプション
-    view_options = {
-      -- show_hidden: ドットファイル（.gitignore等）を表示する
-      show_hidden = true,
-    },
-  },
+  -- netrw代替として起動時に読み込む（遅延するとeキーが効かない）
+  lazy = false,
+  config = function()
+    require("oil").setup({
+      columns = {
+        "icon",
+      },
+      view_options = {
+        show_hidden = true,
+      },
+    })
+    vim.keymap.set("n", "e", "<cmd>Oil<cr>", { desc = "ファイラーを開く" })
+  end,
 }
