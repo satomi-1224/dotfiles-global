@@ -4,6 +4,13 @@
 
 local opt = vim.opt
 
+-- netrwを無効化（oilに置き換えるため）
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- 透過（Neovide使用時）
+vim.g.neovide_transparency = 0.8
+
 -- リーダーキー
 -- スペースキーをリーダーキーに設定する
 -- リーダーキーはカスタムキーマップの起点となるキー（例: <leader>ff でファイル検索）
