@@ -17,7 +17,6 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   -- keys: 「-」が押された時に初めて読み込む（遅延読み込み）
   keys = {
-    { "-", "<cmd>Oil<cr>", desc = "ファイラーを開く（現在のファイルの親ディレクトリ）" },
     { "e", "<cmd>Oil<cr>", desc = "ファイラーを開く" },
   },
   opts = {
