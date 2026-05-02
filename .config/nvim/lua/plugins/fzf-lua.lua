@@ -15,6 +15,42 @@
 --   - fzf: あいまい検索のコアエンジン（システムにインストールが必要）
 --   - ripgrep(rg): 高速なテキスト検索ツール（live_grepで使用）
 
+-- 現在のバッファの全行を行番号なしで fzf に表示する。
+-- fzf-lua 標準の blines は本文左に大きな行番号が表示されて視認性が悪いため、
+-- 自前で実装する。
+--
+-- 仕組み:
+--   1. 各行を "lnum\t内容" の形で fzf に流す
+--   2. fzf 側で --delimiter="\t" --with-nth=2 として行番号列は非表示
+--   3. 選択結果から行番号をパースして該当行へジャンプ
+local function buf_lines_search()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  local entries = {}
+  for i, line in ipairs(lines) do
+    table.insert(entries, string.format("%d\t%s", i, line))
+  end
+
+  require("fzf-lua").fzf_exec(entries, {
+    prompt = "Search> ",
+    fzf_opts = {
+      -- 行番号と本文を区切るタブの表示幅を縮める
+      -- (デフォルト 8 だと数字の右に大きな空白が出てしまう)
+      ["--tabstop"] = "3",
+    },
+    actions = {
+      ["default"] = function(selected)
+        if not selected or #selected == 0 then return end
+        local lnum = tonumber(selected[1]:match("^(%d+)\t"))
+        if lnum then
+          vim.api.nvim_win_set_cursor(0, { lnum, 0 })
+          vim.cmd("normal! zz")
+        end
+      end,
+    },
+  })
+end
+
 return {
   "ibhagwan/fzf-lua",
   -- nvim-web-devicons: ファイル種別に応じたアイコンを表示する（任意だが見やすくなる）
@@ -39,6 +75,8 @@ return {
     -- バッファ
     -- <leader>fb: 現在開いている全バッファの一覧を表示して切り替える
     { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "バッファ一覧" },
+    -- <leader>fl: 現在のバッファの全行から fzf で絞り込み検索する (行番号非表示)
+    { "<leader>fl", buf_lines_search, desc = "現在のバッファ内検索" },
 
     -- ヘルプ
     -- <leader>fh: Neovimのヘルプドキュメントをあいまい検索する
