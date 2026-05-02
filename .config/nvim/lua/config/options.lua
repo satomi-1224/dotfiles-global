@@ -101,3 +101,9 @@ opt.clipboard = "unnamedplus"
 opt.updatetime = 250
 opt.timeoutlen = 300
 opt.completeopt = "menu,menuone,noselect"
+
+-- カーソル位置の縦ガイド
+vim.opt.cursorcolumn = true
+
+-- lualine がモードを表示するため、画面下の `-- INSERT --` 等は不要
+vim.opt.showmode = false
