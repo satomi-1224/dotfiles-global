@@ -5,6 +5,8 @@
 --   │ (add/change) … 追加・変更された行
 --   _ / ‾         … 削除された行の上端・下端
 --
+-- カーソル行の末尾に最終コミット者・日時を virtual text で自動表示する。
+--
 -- hunk（連続した変更のかたまり）単位で操作できる:
 --   ]h / [h          … 次 / 前の hunk へ移動
 --   <leader>hs       … hunk をステージ（ビジュアル選択範囲も可）
@@ -24,6 +26,7 @@ return {
       changedelete = { text = "~" },
       untracked = { text = "┆" },
     },
+    current_line_blame = true,
     on_attach = function(bufnr)
       local gs = package.loaded.gitsigns
       local map = function(mode, lhs, rhs, desc)
