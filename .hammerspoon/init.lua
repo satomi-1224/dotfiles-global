@@ -40,7 +40,12 @@ pcall(require, "modules.command_launcher")
 pcall(require, "modules.command_launcher_local")
 -- 全コマンド登録後にホットキーをバインド
 pcall(require, "modules.command_launcher_init")
-require("modules.snippets")
+-- スニペット（共通定義を読み込み）
+pcall(require, "modules.snippets")
+-- マシン固有のスニペットを追加（なければスキップ）
+pcall(require, "modules.snippets_local")
+-- 全スニペット登録後にチューザーをセットアップ
+require("modules.snippets_init")
 
 -- リロード完了通知
 hs.notify.new({title = "Hammerspoon", informativeText = "Config reloaded"}):send()

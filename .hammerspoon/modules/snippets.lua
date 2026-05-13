@@ -1,31 +1,11 @@
--- modules/snippets.lua: スニペット管理
+-- modules/snippets.lua: スニペット管理（共通定義）
+-- snippets_local.lua でローカルスニペットを追加後、
+-- snippets_init.lua でチューザーをセットアップする
 
-local launcher = require("modules.command_launcher")
+local M = {}
 
-local snippets = {
+M.list = {
   { title = "now", body = function() return os.date("%Y-%m-%d") end },
 }
 
--- hs.chooser の choices テーブルに関数を入れると ObjC ブリッジで変換できず
--- エントリが消えるため、関数は別マップで管理する
-local bodyMap = {}
-local choices = {}
-for _, s in ipairs(snippets) do
-  bodyMap[s.title] = s.body
-  table.insert(choices, { text = s.title })
-end
-
-local chooser = hs.chooser.new(function(choice)
-  if not choice then return end
-  local body = bodyMap[choice.text]
-  if type(body) == "function" then body = body() end
-  hs.pasteboard.setContents(body)
-  hs.eventtap.keyStroke({"cmd"}, "v")
-end)
-
-chooser:choices(choices)
-chooser:placeholderText("Search snippets...")
-
-hs.hotkey.bind(launcher.mods, "w", function()
-  chooser:show()
-end)
+return M
