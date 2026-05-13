@@ -6,14 +6,18 @@ local snippets = {
   { title = "now", body = function() return os.date("%Y-%m-%d") end },
 }
 
+-- hs.chooser の choices テーブルに関数を入れると ObjC ブリッジで変換できず
+-- エントリが消えるため、関数は別マップで管理する
+local bodyMap = {}
 local choices = {}
 for _, s in ipairs(snippets) do
-  table.insert(choices, { text = s.title, body = s.body })
+  bodyMap[s.title] = s.body
+  table.insert(choices, { text = s.title })
 end
 
 local chooser = hs.chooser.new(function(choice)
   if not choice then return end
-  local body = choice.body
+  local body = bodyMap[choice.text]
   if type(body) == "function" then body = body() end
   hs.pasteboard.setContents(body)
   hs.eventtap.keyStroke({"cmd"}, "v")
