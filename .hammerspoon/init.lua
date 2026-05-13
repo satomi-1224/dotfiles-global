@@ -40,6 +40,7 @@ pcall(require, "modules.command_launcher")
 pcall(require, "modules.command_launcher_local")
 -- 全コマンド登録後にホットキーをバインド
 pcall(require, "modules.command_launcher_init")
+require("modules.snippets")
 
 -- リロード完了通知
 hs.notify.new({title = "Hammerspoon", informativeText = "Config reloaded"}):send()
