@@ -3,9 +3,7 @@
 local launcher = require("modules.command_launcher")
 
 local snippets = {
-  { title = "今日の日付", body = function() return os.date("%Y-%m-%d") end },
-  { title = "お世話になっております", body = "お世話になっております。" },
-  { title = "よろしくお願いいたします", body = "よろしくお願いいたします。" },
+  { title = "now", body = function() return os.date("%Y-%m-%d") end },
 }
 
 local choices = {}
