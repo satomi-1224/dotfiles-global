@@ -8,6 +8,13 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+-- :pwd の結果をクリップボードにコピーするコマンド
+vim.api.nvim_create_user_command("Pwd", function()
+  local cwd = vim.fn.getcwd()
+  vim.fn.setreg("+", cwd)
+  vim.notify(cwd, vim.log.levels.INFO)
+end, {})
+
 -- 外部でファイルが変更された時に自動で再読み込みする
 -- Claude Codeやgitなどで編集した変更がNeovimにリアルタイムで反映される
 --
