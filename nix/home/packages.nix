@@ -14,6 +14,7 @@
     apm-cli
     tree-sitter
     nodejs
+    nb
     # Docker
     docker-client
     docker-compose
