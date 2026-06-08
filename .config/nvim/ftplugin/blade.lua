@@ -1,0 +1,13 @@
+-- ftplugin/blade.lua
+-- Laravel Blade（.blade.php）用のファイルタイプ設定
+-- ftplugin はファイルタイプごとのバッファローカル設定の標準的な置き場所
+--
+-- Neovim 本体は .blade.php を blade ファイルタイプとして検出するが、
+-- blade 用の commentstring を持たない。そのため gcc（組み込みコメント機能）が
+-- 「Option 'commentstring' is empty.」となりコメントできない。
+--
+-- ここで blade のコメント構文を設定して gcc を有効にする。
+-- HTML や PHP の領域は treesitter の injection によって、より深い言語の
+-- commentstring（<!-- -->、// 等）が自動で選択されるため、ここでの設定は
+-- blade ディレクティブ・プレーンテキスト領域のフォールバックとして働く。
+vim.bo.commentstring = "{{-- %s --}}"
