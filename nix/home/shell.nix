@@ -14,6 +14,16 @@
 
     initContent = ''
       [ -f ~/.secrets ] && source ~/.secrets
+
+      function ghq-fzf-widget() {
+        local dir
+        dir=$(ghq list --full-path | fzf) || return
+        [ -n "$dir" ] || return
+        BUFFER="cd ''${(q)dir}"
+        zle accept-line
+      }
+      zle -N ghq-fzf-widget
+      bindkey '^g' ghq-fzf-widget
     '';
   };
 
