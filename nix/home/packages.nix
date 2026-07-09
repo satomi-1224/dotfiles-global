@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     # CLI tools
+    bun
     ripgrep
     lazygit
     fzf
