@@ -19,9 +19,10 @@
 --   - fzf-lua: スコープの「任意パス」選択などの補助picker（任意）
 --
 -- キーマップ（<leader> はスペース）:
---   <leader>sr : パネルを開く（Search & Replace across files）
+--   <leader>fg : パネルを開く（Find in Files。従来fzf-luaのlive_grepだった枠を引き継ぐ）
+--   <leader>fg (ビジュアル) : 選択範囲を検索語として開く
 --   <leader>sw : カーソル下の単語で開く
---   <leader>sr (ビジュアル) : 選択範囲を検索語として開く
+-- ※ 従来 fzf-lua の live_grep が <leader>fg だったが、それを置き換える形で割り当てた。
 
 return {
   "satomi-1224/power-finder.nvim",
@@ -31,10 +32,10 @@ return {
   cmd = { "PowerFinder", "PowerFinderCword" },
   -- keys: 以下のキーが押された時にも読み込む
   keys = {
-    { "<leader>sr", "<cmd>PowerFinder<cr>", desc = "検索・一括置換（Find in Files）" },
+    { "<leader>fg", "<cmd>PowerFinder<cr>", desc = "検索・一括置換（Find in Files）" },
     { "<leader>sw", "<cmd>PowerFinderCword<cr>", desc = "カーソル下の単語で検索" },
     {
-      "<leader>sr",
+      "<leader>fg",
       function()
         require("power-finder").open_visual()
       end,
