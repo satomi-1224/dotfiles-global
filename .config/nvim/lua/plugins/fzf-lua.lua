@@ -67,8 +67,6 @@ return {
     { "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "最近開いたファイル" },
 
     -- テキスト検索
-    -- <leader>fg: プロジェクト全体のファイル内容をリアルタイムにgrep検索する
-    { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "テキスト検索（grep）" },
     -- <leader>fw: カーソル下の単語をプロジェクト全体から検索する
     { "<leader>fw", "<cmd>FzfLua grep_cword<cr>", desc = "カーソル下の単語を検索" },
 
