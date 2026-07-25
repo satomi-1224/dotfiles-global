@@ -88,6 +88,9 @@ config.keys = {
 
   -- Shift+Enterで改行を送信
   { key = 'Enter', mods = 'SHIFT', action = wezterm.action.SendString('\n') },
+
+  -- Cmd+gでghq-fzf-widgetを起動(zsh側で専用シーケンスをbindkey)
+  { key = 'g', mods = 'CMD', action = wezterm.action.SendString('\x1b[71;9u') },
 }
 
 -- ============================================================================

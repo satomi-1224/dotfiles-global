@@ -23,7 +23,7 @@
         zle accept-line
       }
       zle -N ghq-fzf-widget
-      bindkey '^g' ghq-fzf-widget
+      bindkey '\e[71;9u' ghq-fzf-widget
     '';
   };
 
