@@ -4,7 +4,7 @@
 
 local opt = vim.opt
 
--- netrwを無効化（oilに置き換えるため）
+-- netrwを無効化（sludgeに置き換えるため）
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
