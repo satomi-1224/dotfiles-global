@@ -1,0 +1,90 @@
+{
+  "nodes": {
+    "apm-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777108701,
+        "narHash": "sha256-uczFth1hJqgKIEFiH723aHJ3XMIWiQeEmlyVL8uATNE=",
+        "owner": "satomi-1224",
+        "repo": "apm-overlay",
+        "rev": "d765a9920dc7aa0268698001cbf5692894cfc66b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "satomi-1224",
+        "repo": "apm-overlay",
+        "type": "github"
+      }
+    },
+    "claude-code-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786479142,
+        "narHash": "sha256-ZoFhC8n5FRUUqsm+GQSA4M3t0UevUcjDoTfF5j6nMPI=",
+        "owner": "ryoppippi",
+        "repo": "claude-code-overlay",
+        "rev": "e93d23b2f4a50e8e883e85fc8eef069ceae03c79",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryoppippi",
+        "repo": "claude-code-overlay",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786538400,
+        "narHash": "sha256-PH8B1YKxedcWKNw2xsk6cKPVk/rJoLgdlWd5d+Icies=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "e13ba5e5abbd9b912fa8c6979bd119e87ca7fdd9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1786348146,
+        "narHash": "sha256-we5zDEFfn8TgzeWKjKDMIjeQZ59omEPl23NIF+13/ys=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d482ef84049d9b7276b83a06e4e4d76983830097",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "apm-overlay": "apm-overlay",
+        "claude-code-overlay": "claude-code-overlay",
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

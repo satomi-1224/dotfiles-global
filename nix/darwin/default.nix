@@ -85,7 +85,8 @@
     enable = true;
     onActivation.cleanup = "zap";
     casks = [
-      "nikitabobko/tap/aerospace"
+      # AeroSpace は comet（自作のタイリングウィンドウマネージャ）へ置き換えたため外した。
+      # `onActivation.cleanup = "zap"` なので、この宣言を消すとアンインストールされる。
       "docker-desktop"
       "google-chrome"
       "google-japanese-ime"
@@ -99,8 +100,9 @@
   # ----------------------------------------
   # Auto-start applications
   # ----------------------------------------
-  # Hammerspoon / AeroSpace はアプリ側の start-at-login で起動するため launchd agent は登録しない
+  # Hammerspoon はアプリ側の start-at-login で起動するため launchd agent は登録しない
   # (両方登録すると macOS ログイン項目と launchd の二重起動になる)
+  # comet は各マシンのローカル設定で launchd agent として登録している
   launchd.user.agents.homerow = {
     serviceConfig = {
       Label = "com.dexterleng.homerow.launcher";

@@ -30,7 +30,8 @@ end)
 
 -- モジュール読み込み（共通）
 -- Note: ウィンドウ管理/ワークスペースはAeroSpaceに移行済み
-require("modules.app_switcher")
+-- アプリ/ウィンドウ巡回（alt-f / alt-d）は comet へ移した
+-- （focus next-app / focus next-window-in-app）。
 require("modules.clipboard")
 require("modules.search")
 

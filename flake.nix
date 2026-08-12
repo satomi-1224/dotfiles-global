@@ -35,11 +35,8 @@
           ".config/nvim" = { source = "${self}/.config/nvim"; recursive = true; };
           ".config/yazi" = { source = "${self}/.config/yazi"; recursive = true; };
           ".config/wezterm" = { source = "${self}/.config/wezterm"; recursive = true; };
-          ".config/aerospace/wallpaper.sh" = {
-            source = "${self}/.config/aerospace/wallpaper.sh";
-            executable = true;
-          };
-          ".aerospace.toml".source = "${self}/.aerospace.toml";
+          # AeroSpace は comet へ置き換えた。壁紙の切替も comet が内蔵しているため
+          # wallpaper.sh は不要になった（comet の [wallpaper] dir を使う）。
           ".hammerspoon" = { source = "${self}/.hammerspoon"; recursive = true; };
         };
 
