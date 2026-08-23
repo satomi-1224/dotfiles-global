@@ -7,17 +7,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    claude-code-overlay = {
-      url = "github:ryoppippi/claude-code-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    apm-overlay = {
-      url = "github:satomi-1224/apm-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, home-manager, claude-code-overlay, apm-overlay, ... }: {
+  outputs = { self, nixpkgs, home-manager, ... }: {
 
     darwinModules = {
       default = import ./nix/darwin;
@@ -47,8 +39,5 @@
         home.stateVersion = "24.11";
       };
     };
-
-    overlays.claude-code = claude-code-overlay.overlays.default;
-    overlays.apm-cli = apm-overlay.overlays.default;
   };
 }

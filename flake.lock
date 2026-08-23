@@ -1,45 +1,5 @@
 {
   "nodes": {
-    "apm-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1777108701,
-        "narHash": "sha256-uczFth1hJqgKIEFiH723aHJ3XMIWiQeEmlyVL8uATNE=",
-        "owner": "satomi-1224",
-        "repo": "apm-overlay",
-        "rev": "d765a9920dc7aa0268698001cbf5692894cfc66b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "satomi-1224",
-        "repo": "apm-overlay",
-        "type": "github"
-      }
-    },
-    "claude-code-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1786479142,
-        "narHash": "sha256-ZoFhC8n5FRUUqsm+GQSA4M3t0UevUcjDoTfF5j6nMPI=",
-        "owner": "ryoppippi",
-        "repo": "claude-code-overlay",
-        "rev": "e93d23b2f4a50e8e883e85fc8eef069ceae03c79",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ryoppippi",
-        "repo": "claude-code-overlay",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -78,8 +38,6 @@
     },
     "root": {
       "inputs": {
-        "apm-overlay": "apm-overlay",
-        "claude-code-overlay": "claude-code-overlay",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }

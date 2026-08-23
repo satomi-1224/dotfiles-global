@@ -9,7 +9,6 @@
       lg = "lazygit";
       ld = "lazydocker";
       yz = "yazi";
-      cl = "claude";
     };
 
     initContent = ''
