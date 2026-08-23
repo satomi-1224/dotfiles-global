@@ -11,8 +11,6 @@
     ouch
     ffmpegthumbnailer
     mpv
-    claude-code
-    apm-cli
     tree-sitter
     nodejs
     nb

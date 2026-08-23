@@ -30,7 +30,6 @@ scripts/               セットアップスクリプト
 |--------|------|
 | `darwinModules.default` | macOS system defaults, Touch ID, Finder, Dock, 共通 homebrew casks |
 | `homeManagerModules.default` | packages, shell, git(共通部分), dotfile symlinks |
-| `overlays.claude-code` | claude-code overlay の再エクスポート |
 
 ## 使い方
 
