@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   home.packages = with pkgs; [
     # CLI tools
@@ -15,6 +15,7 @@
     nodejs
     nb
     ghq
+    herdr
     # Docker
     docker-client
     docker-compose
@@ -22,6 +23,37 @@
     # Fonts
     nerd-fonts.jetbrains-mono
   ];
+
+  # Ghostty is only the outer terminal. Herdr owns every multiplexing feature:
+  # workspaces, tabs, panes, navigation, resizing, and scrollback.
+  programs.ghostty = {
+    enable = true;
+    package = pkgs.ghostty-bin;
+    clearDefaultKeybinds = true;
+    settings = {
+      command = lib.getExe pkgs.herdr;
+      shell-integration = "none";
+      scrollback-limit = 0;
+      window-save-state = "never";
+      window-decoration = "none";
+      macos-applescript = false;
+      command-palette-entry = "";
+
+      # Restore only terminal-emulator operations that do not overlap with Herdr.
+      keybind = [
+        "performable:super+c=copy_to_clipboard"
+        "super+v=paste_from_clipboard"
+        "super+equal=increase_font_size:1"
+        "super+minus=decrease_font_size:1"
+        "super+zero=reset_font_size"
+        "super+shift+comma=reload_config"
+
+        # Preserve the existing shell conveniences from WezTerm.
+        "shift+enter=text:\\n"
+        "super+g=text:\\x1b[71;9u"
+      ];
+    };
+  };
 
   # Neovim
   # home-manager は programs.neovim.enable = true のとき init.lua を自動生成して
