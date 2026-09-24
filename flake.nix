@@ -24,6 +24,10 @@
         ];
 
         home.file = {
+          ".config/herdr/config.toml" = {
+            source = "${self}/.config/herdr/config.toml";
+            force = true;
+          };
           ".config/nvim" = { source = "${self}/.config/nvim"; recursive = true; };
           ".config/yazi" = { source = "${self}/.config/yazi"; recursive = true; };
           ".config/wezterm" = { source = "${self}/.config/wezterm"; recursive = true; };

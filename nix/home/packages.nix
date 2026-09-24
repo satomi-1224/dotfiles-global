@@ -20,8 +20,6 @@
     docker-client
     docker-compose
     lazydocker
-    # Fonts
-    nerd-fonts.jetbrains-mono
   ];
 
   # Ghostty is only the outer terminal. Herdr owns every multiplexing feature:
@@ -38,6 +36,22 @@
       window-decoration = "none";
       macos-applescript = false;
       command-palette-entry = "";
+
+      # Match the previous WezTerm appearance.
+      theme = "Selenized Dark";
+      background-opacity = 0.8;
+      background-blur = 20;
+      font-family = [
+        "JetBrainsMono Nerd Font"
+        "Hiragino Sans"
+        "Menlo"
+        "Monaco"
+      ];
+      font-feature = "-calt,-clig,-liga,-dlig";
+      font-size = 14;
+      window-padding-x = 8;
+      window-padding-y = 6;
+      macos-option-as-alt = "left";
 
       # Restore only terminal-emulator operations that do not overlap with Herdr.
       keybind = [

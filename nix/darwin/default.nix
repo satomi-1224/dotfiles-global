@@ -13,6 +13,12 @@
     curl
   ];
 
+  # Install the terminal font through macOS font registration so GUI apps such
+  # as Ghostty can discover it through CoreText.
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+
   # Touch ID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 
