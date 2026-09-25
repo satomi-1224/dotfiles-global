@@ -37,7 +37,7 @@
       macos-applescript = false;
       command-palette-entry = "";
 
-      # Match the previous WezTerm appearance.
+      # Terminal appearance.
       theme = "Selenized Dark";
       background-opacity = 0.8;
       background-blur = 20;
@@ -62,7 +62,7 @@
         "super+zero=reset_font_size"
         "super+shift+comma=reload_config"
 
-        # Preserve the existing shell conveniences from WezTerm.
+        # Shell input conveniences.
         "shift+enter=text:\\n"
         "super+g=text:\\x1b[71;9u"
       ];

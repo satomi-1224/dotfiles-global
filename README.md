@@ -10,8 +10,7 @@ flake.nix              darwinModules, homeManagerModules, overlays を出力
 nix/
   darwin/              macOS system defaults, 共通 homebrew casks
   home/                packages, shell, git (共通部分)
-.config/               herdr, nvim, wezterm, yazi
-magicboard/            MagicBoard アプリ
+.config/               herdr, nvim, yazi
 scripts/               セットアップスクリプト
 ```
 

@@ -30,7 +30,6 @@
           };
           ".config/nvim" = { source = "${self}/.config/nvim"; recursive = true; };
           ".config/yazi" = { source = "${self}/.config/yazi"; recursive = true; };
-          ".config/wezterm" = { source = "${self}/.config/wezterm"; recursive = true; };
           # AeroSpace は comet へ置き換えた。壁紙の切替も comet が内蔵しているため
           # wallpaper.sh は不要になった（comet の [wallpaper] dir を使う）。
           #

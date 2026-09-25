@@ -99,7 +99,6 @@
       "google-japanese-ime"
       "homerow"
       "dbeaver-community"
-      "wezterm"
     ];
   };
 
